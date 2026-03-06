@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Simulasi Rangkaian Listrik</title>
+    <style>
+        body { font-family: sans-serif; text-align: center; background: #f4f4f4; }
+        .container { margin: 20px auto; padding: 20px; background: white; width: 80%; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        img { width: 100px; margin: 10px; }
+        button { padding: 10px 15px; margin: 5px; cursor: pointer; border-radius: 5px; border: 1px solid #ccc; }
+        .btn-on { background-color: #ffeb3b; }
+        .btn-off { background-color: #f44336; color: white; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Rangkaian 1 (3 Lampu)</h2>
+        <img id="l1" src="https://drive.google.com/file/d/1WqdtkPEc97m37VlTi2O4byzPHnoVXyIQ/view?usp=classroom_web&authuser=0" alt="lampu">
+        <img id="l2" src="https://drive.google.com/file/d/1WqdtkPEc97m37VlTi2O4byzPHnoVXyIQ/view?usp=classroom_web&authuser=0" alt="lampu">
+        <img id="l3" src="https://drive.google.com/file/d/1WqdtkPEc97m37VlTi2O4byzPHnoVXyIQ/view?usp=classroom_web&authuser=0" alt="lampu">
+        <br>
+        <button onclick="toggleLampu('l1')">Saklar 1</button>
+        <button onclick="toggleLampu('l2')">Saklar 2</button>
+        <button onclick="toggleLampu('l3')">Saklar 3</button>
+        <br>
+        <button class="btn-on" onclick="semuaLampu('on', ['l1', 'l2', 'l3'])">Semua ON</button>
+        <button class="btn-off" onclick="semuaLampu('off', ['l1', 'l2', 'l3'])">Semua OFF</button>
+    </div>
+
+    <div class="container">
+        <h2>Rangkaian 2 (4 Lampu)</h2>
+        <img id="la" src="https://drive.google.com/file/d/1WqdtkPEc97m37VlTi2O4byzPHnoVXyIQ/view?usp=classroom_web&authuser=0" alt="lampu">
+        <img id="lb" src="https://drive.google.com/file/d/1WqdtkPEc97m37VlTi2O4byzPHnoVXyIQ/view?usp=classroom_web&authuser=0" alt="lampu">
+        <img id="lc" src="https://drive.google.com/file/d/1WqdtkPEc97m37VlTi2O4byzPHnoVXyIQ/view?usp=classroom_web&authuser=0" alt="lampu">
+        <img id="ld" src="https://drive.google.com/file/d/1WqdtkPEc97m37VlTi2O4byzPHnoVXyIQ/view?usp=classroom_web&authuser=0" alt="lampu">
+        <br>
+        <button onclick="toggleLampu('la')">Saklar A</button>
+        <button onclick="toggleLampu('lb')">Saklar B</button>
+        <button onclick="toggleLampu('lc')">Saklar C</button>
+        <button onclick="toggleLampu('ld')">Saklar D</button>
+        <br>
+        <button class="btn-on" onclick="semuaLampu('on', ['la', 'lb', 'lc', 'ld'])">Semua ON</button>
+        <button class="btn-off" onclick="semuaLampu('off', ['la', 'lb', 'lc', 'ld'])">Semua OFF</button>
+        <br>
+        <button onclick="semuaLampu('on', ['la', 'lb'])">Grup AB ON</button>
+        <button onclick="semuaLampu('on', ['lc', 'ld'])">Grup CD ON</button>
+    </div>
+
+    <script>
+        // Fungsi untuk menyalakan/mematikan satu lampu (Toggle)
+        function toggleLampu(id) {
+            let lampu = document.getElementById(id);
+            if (lampu.src.match("bulboff")) {
+                lampu.src = "https://www.w3schools.com/js/pic_bulbon.gif";
+            } else {
+                lampu.src = "https://www.w3schools.com/js/pic_bulboff.gif";
+            }
+        }
+
+        // Fungsi untuk kontrol banyak lampu sekaligus
+        function semuaLampu(aksi, daftarId) {
+            daftarId.forEach(id => {
+                let lampu = document.getElementById(id);
+                if (aksi === 'on') {
+                    lampu.src = "https://www.w3schools.com/js/pic_bulbon.gif";
+                } else {
+                    lampu.src = "https://www.w3schools.com/js/pic_bulboff.gif";
+                }
+            });
+        }
+    </script>
+</body>
+</html>
